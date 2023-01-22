@@ -1,0 +1,16 @@
+.product-box{
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: all .2s;
+    &__img{
+        width: 100%;
+        height: 200px;
+    }
+    &__title{
+        font-size: 1rem;
+        font-family: sans-serif;
+    }
+    &:hover{
+        transform: scale(1.1);
+    }
+}

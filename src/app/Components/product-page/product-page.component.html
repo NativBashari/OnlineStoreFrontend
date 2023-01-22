@@ -1,0 +1,13 @@
+<section class="product-overview">
+    <div class="product-overview__img">
+        <img [src]="product.image" alt="product-image">
+    </div> 
+    <div class="product-overview__content">
+        <h3 class="product-overview__title">{{product.name}}</h3>
+        <p class="product-overview__description">{{product.description}}</p>
+        <span class="product-overview__price">{{product.price| currency }}</span>
+        <button class="product-overview__btn">Add To Cart</button>
+
+    </div>
+
+</section>

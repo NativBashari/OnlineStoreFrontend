@@ -1,0 +1,8 @@
+.header{
+    background-color: orangered;
+    &__logo{
+        font-size: 5rem;
+        color: #fff;
+        cursor: pointer;
+    }
+}
