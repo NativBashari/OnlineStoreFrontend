@@ -14,6 +14,11 @@ import { ProductsListComponent } from './Components/products-list/products-list.
 import { ProductsService } from './Services/Products/products.Service';
 import { HeadersInterceptors } from './Services/HeadersInterceptors.service';
 import { ProductPageComponent } from './Components/product-page/product-page.component';
+import { CmsPageComponent } from './Pages/cms-page/cms-page.component';
+import { RoleGuard } from './Guards/Role.guard';
+import { IsAdminService } from './Services/Auth/isAdmin.service';
+import { NewProductComponent } from './Components/new-product/new-product.component';
+import { CategoriesService } from './Services/Products/categories.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     HeaderComponent,
     ProductItemComponent,
     ProductsListComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    CmsPageComponent,
+    NewProductComponent
   ],
   imports: [
     BrowserModule,
@@ -32,12 +39,16 @@ import { ProductPageComponent } from './Components/product-page/product-page.com
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,
+  providers: [
+    AuthService,
     ProductsService,
+    CategoriesService,
    {provide: HTTP_INTERCEPTORS,
     useClass: HeadersInterceptors,
     multi: true
-  }],
+  },
+  RoleGuard
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IsAdminService } from 'src/app/Services/Auth/isAdmin.service';
 import { User } from '../../Models/user.model';
 import { AuthService } from '../../Services/Auth/auth.Service';
 
@@ -11,11 +12,21 @@ import { AuthService } from '../../Services/Auth/auth.Service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  isLoggedIn: boolean = false;
+  errorMessage: string ="";
   constructor(private authService: AuthService, private router: Router) { }
   res: {
-    token: string
-  } = {token: ""}
+    token: string,
+    isSuccess : boolean,
+    message: string,
+    isAdmin: boolean
+  } = 
+  {
+    token: "",
+    isSuccess: false,
+    message: "",
+    isAdmin: false
+  }
   ngOnInit(): void {
   }
 
@@ -33,12 +44,15 @@ export class LoginComponent implements OnInit {
         password: password
       }
       this.authService.tryLogin(user).subscribe(res =>{
-        this.res = res as {token: string};
+        this.res = res as {token: string, isSuccess: boolean, message: string, isAdmin: boolean};
         localStorage.setItem("jwt", this.res.token);
+        localStorage.setItem("Role", this.res.isAdmin? "Admin" : "User");
         this.router.navigate(["products-list"]);
-
-      })
+      },
+      error => {
+        this.errorMessage = error.error.message;
+      }
+      )
     }
-
   }
 }

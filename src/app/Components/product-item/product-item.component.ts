@@ -1,6 +1,8 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/ProductsManagement/product.model';
+import { IsAdminService } from 'src/app/Services/Auth/isAdmin.service';
 
 @Component({
   selector: 'app-product-item',
@@ -22,7 +24,8 @@ export class ProductItemComponent implements OnInit {
     createdAt : new Date(),
     modifiedAt: new Date()
   }
-  constructor(private router: Router) { }
+  isAdmin: boolean = this.isAdminService.isAdmin();
+  constructor(private router: Router, private isAdminService: IsAdminService) { }
 
   ngOnInit(): void {
   }

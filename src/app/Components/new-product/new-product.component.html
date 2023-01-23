@@ -1,0 +1,37 @@
+<section>
+    <div>
+        <form [formGroup]="productForm">
+            <div>
+                <label for="name">Name:</label>
+                <input id="name" type="text" formControlName="name">
+            </div>
+            <div>
+                <label for="description">Description: </label>
+                <input id="description" type="text" formControlName="description">
+            </div>
+            <div>
+                <label for="category">Category: </label>
+                <select formControlName="category">
+                    <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                </select>
+            </div>
+            <div>
+                <label for="inventory">Inventory: </label>
+                <select formControlName="inventory">
+                    <option value="50">50 Q</option>
+                    <option value="75">75 Q</option>
+                    <option value="100">100 Q</option>
+                </select>
+            </div>
+            <div>
+                <label for="price"></label>
+                <input id="price" type="number" formControlName="price">
+            </div>
+            <div>
+                <label for="discount"></label>
+                <
+            </div>
+        </form>
+
+    </div>
+</section>
