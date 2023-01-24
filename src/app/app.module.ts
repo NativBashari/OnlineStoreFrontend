@@ -19,6 +19,8 @@ import { RoleGuard } from './Guards/Role.guard';
 import { IsAdminService } from './Services/Auth/isAdmin.service';
 import { NewProductComponent } from './Components/new-product/new-product.component';
 import { CategoriesService } from './Services/Products/categories.service';
+import { DiscountsService } from './Services/Products/discounts.service';
+import { SizesService } from './Services/Products/sizes.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { CategoriesService } from './Services/Products/categories.service';
     AuthService,
     ProductsService,
     CategoriesService,
+    DiscountsService,
+    SizesService,
    {provide: HTTP_INTERCEPTORS,
     useClass: HeadersInterceptors,
     multi: true

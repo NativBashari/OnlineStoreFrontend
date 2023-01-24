@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/Models/ProductsManagement/Category.model';
 import { Discount } from 'src/app/Models/ProductsManagement/Discount.model';
+import { Size } from 'src/app/Models/ProductsManagement/Size.model';
 import { CategoriesService } from 'src/app/Services/Products/categories.service';
+import { DiscountsService } from 'src/app/Services/Products/discounts.service';
+import { SizesService } from 'src/app/Services/Products/sizes.service';
 
 @Component({
   selector: 'app-new-product',
@@ -11,9 +14,10 @@ import { CategoriesService } from 'src/app/Services/Products/categories.service'
 })
 export class NewProductComponent implements OnInit {
 
-  constructor(private catgoriesService: CategoriesService) { }
+  constructor(private catgoriesService: CategoriesService, private discountsService: DiscountsService, private sizesService: SizesService) { }
   categories: Category[] =[];
   discounts: Discount[] =[];
+  sizes: Size[] =[];
 
 
 
@@ -21,6 +25,13 @@ export class NewProductComponent implements OnInit {
     this.catgoriesService.get().subscribe(res =>{
       this.categories = res as Category[];
     })
+    this.discountsService.get().subscribe(res => {
+      this.discounts = res as Discount[];
+    })
+    this.sizesService.get().subscribe(res =>{
+      this.sizes = res as Size[];
+    })
+   
   }
 
   productForm: FormGroup = new FormGroup({

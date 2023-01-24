@@ -28,8 +28,24 @@
                 <input id="price" type="number" formControlName="price">
             </div>
             <div>
-                <label for="discount"></label>
-                <
+                <label for="discount">Discount: </label>
+                <select>
+                    <option value="0">No discount</option>
+                    <option *ngFor="let discount of discounts" value="{{discount.id}}">{{discount.name}} : {{discount.discountPrec}}%</option>
+                </select>
+            </div>
+            <div>
+                <label for="image">Image: </label>
+                <input type="text" id="image" formControlName="image">
+            </div>
+            <div>
+                <label>Sizes: </label>
+                <fieldset>
+                    <div *ngFor="let size of sizes">
+                        <input id="size" type="checkbox" value="{{size.id}}">
+                        <label for="size">{{size.name}}</label>
+                    </div>
+                </fieldset>
             </div>
         </form>
 
