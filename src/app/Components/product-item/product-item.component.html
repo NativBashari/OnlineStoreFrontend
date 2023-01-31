@@ -1,6 +1,8 @@
-<div class="product-box" (click)="navToProductPage()">
-    <img [src]="product.image" class="product-box__img">
-    <h6 class="product-box__title">{{product.name}}</h6>
+<div class="product-box">
+    <div (click)="navToProductPage()">
+        <img [src]="product.image" class="product-box__img">
+        <h6 class="product-box__title">{{product.name}}</h6>
+    </div>
     <div class="product-box__operations" *ngIf="isAdmin">
         <button>Delete</button>
         <button>Edit</button>

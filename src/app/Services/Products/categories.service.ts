@@ -13,4 +13,7 @@ export class CategoriesService{
     get(): Observable<Category[]>{
         return this.httpClient.get(`${environment.ApiBaseUrl}/Categories`) as Observable<Category[]>;
     }
+    getById(id: number): Observable<Category>{
+        return this.httpClient.get(`${environment.ApiBaseUrl}/Categories/`+ id) as Observable<Category>;
+    }
 }

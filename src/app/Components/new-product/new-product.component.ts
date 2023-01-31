@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/Models/ProductsManagement/Category.model';
 import { Discount } from 'src/app/Models/ProductsManagement/Discount.model';
 import { Product } from 'src/app/Models/ProductsManagement/product.model';
@@ -51,28 +51,9 @@ export class NewProductComponent implements OnInit {
 
   addProduct(){
     if(this.productForm.valid){
-      let name = this.productForm.controls['name'].value;
-      let description = this.productForm.controls['description'].value;
       let category = this.productForm.controls['category'].value;
-      let inventory= this.productForm.controls['inventory'].value;
-      let price = this.productForm.controls['price'].value;
       let discount = this.productForm.controls['discount'].value;
-      let image = this.productForm.controls['image'].value;
-      let sizes = this.productForm.controls['sizes'].value;
-
-      let product: Product={
-        id: 0,
-        name: name,
-        description: description,
-        category: category,
-        price: price,
-        discount: discount,
-        image: image,
-        sizes: this.checkedSizes,
-        createdAt: new Date(),
-        modifiedAt: new Date()
-      }
-      this.postProduct(product);
+      this.postProduct(category,discount);
     }
   }
   onChangeSizes(event: any){
@@ -86,8 +67,36 @@ export class NewProductComponent implements OnInit {
     console.log(this.checkedSizes);
 }
 
-postProduct(product: Product){
+postProduct(categoryId: number, discountId: number){
+  let product: Product={
+    id: 0,
+    name: this.productForm.controls['name'].value,
+    description : this.productForm.controls['description'].value,
+    price : this.productForm.controls['price'].value,
+    image : this.productForm.controls['image'].value,
+    category: {id : 0 , name : '', description : '', image: '', products : [], createdAt : new Date(), modifiedAt : new Date()},
+    discount: {id: 0, name: '', description : '' , discountPrec:0, isActive: false, createdAt: new Date(), modifiedAt: new Date()},
+    sizes: [],
+    createdAt: new Date(),
+    modifiedAt: new Date()
+  }
+  this.catgoriesService.getById(categoryId).subscribe(res => {
+    product.category = res;
+  });
+  this.discountsService.getById(discountId).subscribe(res => {
+    product.discount = res;
+  });
+  this.checkedSizes.forEach(item => {
+    this.sizesService.getById(item).subscribe(res => {
+      product.sizes.push(res);
+    })
+  });
+  console.log(product);
+  this.productsService.post(product).subscribe(res => {
+    console.log(res);
+  })
   
+
 }
 
 }

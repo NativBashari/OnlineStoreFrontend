@@ -12,4 +12,7 @@ export class DiscountsService{
     get(): Observable<Discount[]> {
         return this.httpClient.get(`${environment.ApiBaseUrl}/Discounts`) as Observable<Discount[]>;
     }
+    getById(id: number): Observable<Discount>{
+        return this.httpClient.get(`${environment.ApiBaseUrl}/Discounts/`+ id) as Observable<Discount>;
+    }
 }
