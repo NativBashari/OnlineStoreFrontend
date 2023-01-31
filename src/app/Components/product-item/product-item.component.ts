@@ -18,7 +18,6 @@ export class ProductItemComponent implements OnInit {
     image : '',
     price: 0,
     category: {id : 0 , name : '', description : '', image: '', products : [], createdAt : new Date(), modifiedAt : new Date()},
-    inventory: {id:0 , quantity: 0, createdAt : new Date() , modifiedAt : new Date()},
     discount: {id: 0, name: '', description : '' , discountPrec:0, isActive: false, createdAt: new Date(), modifiedAt: new Date()},
     sizes: [] ,
     createdAt : new Date(),

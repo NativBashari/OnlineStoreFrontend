@@ -1,6 +1,5 @@
 import { Category } from "./Category.model";
 import { Discount } from "./Discount.model";
-import { Inventory } from "./Inventory.model";
 import { Size } from "./Size.model";
 
 export interface Product{
@@ -8,7 +7,6 @@ export interface Product{
     name: string,
     description: string,
     category: Category ,
-    inventory: Inventory,
     price: number,
     discount: Discount,
     image: string,

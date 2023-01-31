@@ -16,20 +16,12 @@
                 </select>
             </div>
             <div>
-                <label for="inventory">Inventory: </label>
-                <select formControlName="inventory">
-                    <option value="50">50 Q</option>
-                    <option value="75">75 Q</option>
-                    <option value="100">100 Q</option>
-                </select>
-            </div>
-            <div>
                 <label for="price"></label>
                 <input id="price" type="number" formControlName="price">
             </div>
             <div>
                 <label for="discount">Discount: </label>
-                <select>
+                <select formControlName="discount">
                     <option value="0">No discount</option>
                     <option *ngFor="let discount of discounts" value="{{discount.id}}">{{discount.name}} : {{discount.discountPrec}}%</option>
                 </select>
@@ -42,10 +34,13 @@
                 <label>Sizes: </label>
                 <fieldset>
                     <div *ngFor="let size of sizes">
-                        <input id="size" type="checkbox" value="{{size.id}}">
+                        <input id="size" type="checkbox" value="{{size.id}}" formControlName="sizes" (change)="onChangeSizes($event)">
                         <label for="size">{{size.name}}</label>
                     </div>
                 </fieldset>
+            </div>
+            <div>
+                <button (click)="addProduct()">Add product</button>
             </div>
         </form>
 

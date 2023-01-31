@@ -19,4 +19,7 @@ get(): Observable<Product>{
 getById(id: number) : Observable<Product>{
     return this.httpClient.get(`${environment.ApiBaseUrl}/Products/`+ id) as Observable<Product>;  
 }
+post(product: Product){
+    return this.httpClient.post(`${environment.ApiBaseUrl}/Products/`, product);
+}
 }
