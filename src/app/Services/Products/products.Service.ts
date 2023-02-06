@@ -25,4 +25,7 @@ post(product: Product){
 delete(id: number){
     return this.httpClient.delete(`${environment.ApiBaseUrl}/Products/`+ id);
 }
+update(product: Product){
+    return this.httpClient.put(`${environment.ApiBaseUrl}/Products`,product);
+}
 }

@@ -43,13 +43,6 @@ export class NewProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.catgoriesService.get().subscribe(res =>{
-      this.categories = res as Category[];
-    })
-    this.discountsService.get().subscribe(res => {
-      this.discounts = res as Discount[];
-      console.log(this.discounts);
-    })
     this.activatedRoute.params.subscribe(param =>{
       this.productId = param['id'];
       if(this.productId !== undefined ){
@@ -59,46 +52,36 @@ export class NewProductComponent implements OnInit {
       console.log(this.isUpdate);
     })
    
+    this.catgoriesService.get().subscribe(res =>{
+      this.categories = res as Category[];
+    })
+    this.discountsService.get().subscribe(res => {
+      this.discounts = res as Discount[];
+      console.log(this.discounts);
+    })
+   
   }
 
   getProduct(){
     this.productsService.getById(this.productId).subscribe(res => {
       this.product= res as Product;
+      console.log(this.product);
     })
   }
-
-  productForm: FormGroup = new FormGroup({
-    name: new FormControl('',[Validators.required]),
-    description: new FormControl('', Validators.required),
-    category: new FormControl(''),
-    price: new FormControl('', Validators.required),
-    discount: new FormControl(''),
-    image: new FormControl(this.product.image, Validators.required),
-    sizes: new FormControl(''),
-    // !!! DONT FORGET : !!! 
-    //createdAt
-    //modifiedAt
-  })
+ 
 
   addProduct(){
-    if(this.productForm.valid){
-      let product: Product={
-        id: 0,
-        name: this.productForm.controls['name'].value,
-        description : this.productForm.controls['description'].value,
-        price : this.productForm.controls['price'].value,
-        image : this.productForm.controls['image'].value,
-        categoryId : this.productForm.controls['category'].value,
-        discountId : this.productForm.controls['discount'].value,
-        category: null,
-        discount: null,
-        createdAt: new Date(),
-        modifiedAt: new Date()
+      if(!this.isUpdate){
+        this.productsService.post(this.product).subscribe(res => {
+          console.log(res);
+        })
       }
-      this.productsService.post(product).subscribe(res => {
-        console.log(res);
-      })
-    }
+      else{
+        this.product.modifiedAt = new Date();
+        this.productsService.update(this.product).subscribe(res => {
+          console.log(res);
+        })
+      } 
   }
 
 
