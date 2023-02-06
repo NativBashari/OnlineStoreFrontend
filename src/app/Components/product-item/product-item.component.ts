@@ -1,8 +1,8 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Models/ProductsManagement/product.model';
 import { IsAdminService } from 'src/app/Services/Auth/isAdmin.service';
+import { ProductsService } from 'src/app/Services/Products/products.Service';
 
 @Component({
   selector: 'app-product-item',
@@ -17,14 +17,15 @@ export class ProductItemComponent implements OnInit {
     description:'',
     image : '',
     price: 0,
+    categoryId: 0,
     category: {id : 0 , name : '', description : '', image: '', products : [], createdAt : new Date(), modifiedAt : new Date()},
+    discountId: 0,
     discount: {id: 0, name: '', description : '' , discountPrec:0, isActive: false, createdAt: new Date(), modifiedAt: new Date()},
-    sizes: [] ,
     createdAt : new Date(),
     modifiedAt: new Date()
   }
   isAdmin: boolean = this.isAdminService.isAdmin();
-  constructor(private router: Router, private isAdminService: IsAdminService) { }
+  constructor(private router: Router, private isAdminService: IsAdminService, private productsService: ProductsService) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,11 @@ export class ProductItemComponent implements OnInit {
   navToProductPage(){
     this.router.navigate(["/product-page", this.product.id]);
 
+  }
+  deleteItem(){
+    this.productsService.delete(this.product.id).subscribe(res =>{
+      console.log(res);
+    })
   }
 
 }

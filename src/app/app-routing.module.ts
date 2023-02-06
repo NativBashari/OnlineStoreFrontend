@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: "products-list" ,component: ProductsListComponent},
   {path: "product-page/:id", component: ProductPageComponent},
   {path: "cms" , component: CmsPageComponent, canActivate:[RoleGuard]},
-  {path: "new-product" , component: NewProductComponent, canActivate: [RoleGuard]}
+  {path: "new-product" , component: NewProductComponent, canActivate: [RoleGuard]},
+  {path: "update-product/:id" , component: NewProductComponent, canActivate: [RoleGuard]}
 ];
 
 @NgModule({

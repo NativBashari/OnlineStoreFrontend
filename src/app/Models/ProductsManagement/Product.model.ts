@@ -1,16 +1,16 @@
 import { Category } from "./Category.model";
 import { Discount } from "./Discount.model";
-import { Size } from "./Size.model";
 
 export interface Product{
     id:number,
     name: string,
     description: string,
-    category: Category ,
+    categoryId: number | null,
+    category: Category| null ,
     price: number,
-    discount: Discount,
+    discountId: number| null,
+    discount: Discount | null,
     image: string,
-    sizes: Size[],
     createdAt: Date,
     modifiedAt: Date
 }

@@ -22,4 +22,7 @@ getById(id: number) : Observable<Product>{
 post(product: Product){
     return this.httpClient.post(`${environment.ApiBaseUrl}/Products/`, product);
 }
+delete(id: number){
+    return this.httpClient.delete(`${environment.ApiBaseUrl}/Products/`+ id);
+}
 }

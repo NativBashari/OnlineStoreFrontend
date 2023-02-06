@@ -1,46 +1,38 @@
 <section>
-    <div>
+    <div class="form-container">
+        <h2>{{isUpdate? 'Update product' : 'Add product'}}</h2>
         <form [formGroup]="productForm">
-            <div>
+            <div class="form-group">
                 <label for="name">Name:</label>
-                <input id="name" type="text" formControlName="name">
+                <input class="form-control" id="name" type="text" formControlName="name">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="description">Description: </label>
-                <input id="description" type="text" formControlName="description">
+                <input class="form-control" id="description" type="text" formControlName="description">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="category">Category: </label>
-                <select formControlName="category">
+                <select class="form-select" formControlName="category">
                     <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
                 </select>
             </div>
-            <div>
-                <label for="price"></label>
-                <input id="price" type="number" formControlName="price">
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input class="form-control" id="price" type="number" formControlName="price">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="discount">Discount: </label>
-                <select formControlName="discount">
+                <select class="form-select" formControlName="discount">
                     <option value="0">No discount</option>
                     <option *ngFor="let discount of discounts" value="{{discount.id}}">{{discount.name}} : {{discount.discountPrec}}%</option>
                 </select>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="image">Image: </label>
-                <input type="text" id="image" formControlName="image">
+                <input class="form-control" type="text" id="image" formControlName="image">
             </div>
             <div>
-                <label>Sizes: </label>
-                <fieldset>
-                    <div *ngFor="let size of sizes">
-                        <input id="size" type="checkbox" value="{{size.id}}" formControlName="sizes" (change)="onChangeSizes($event)">
-                        <label for="size">{{size.name}}</label>
-                    </div>
-                </fieldset>
-            </div>
-            <div>
-                <button (click)="addProduct()">Add product</button>
+                <button (click)="addProduct()" class="btn btn-primary">{{isUpdate? 'Update product' : 'Add product'}}</button>
             </div>
         </form>
 

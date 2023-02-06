@@ -17,9 +17,10 @@ export class ProductPageComponent implements OnInit {
     description:'',
     image : '',
     price: 0,
+    categoryId:0,
     category: {id : 0 , name : '', description : '', image: '', products : [], createdAt : new Date(), modifiedAt : new Date()},
+    discountId: 0,
     discount: {id: 0, name: '', description : '' , discountPrec:0, isActive: false, createdAt: new Date(), modifiedAt: new Date()},
-    sizes: [] ,
     createdAt : new Date(),
     modifiedAt: new Date()
   };

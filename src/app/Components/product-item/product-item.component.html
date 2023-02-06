@@ -4,7 +4,7 @@
         <h6 class="product-box__title">{{product.name}}</h6>
     </div>
     <div class="product-box__operations" *ngIf="isAdmin">
-        <button>Delete</button>
+        <button (click)="deleteItem()">Delete</button>
         <button>Edit</button>
     </div>
 </div>
