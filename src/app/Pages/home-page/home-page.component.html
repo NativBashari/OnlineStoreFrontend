@@ -1,0 +1,14 @@
+<div class="welcome">
+    <div class="welcome__button">
+        <button routerLink="/products-list">SHOP NOW</button>
+    </div>
+</div>
+<div class="categories">
+    <div class="categories__category-box" *ngFor="let c of categories">
+        <img [src]="c.image" alt="">
+        <div class="categories__category-box__overview">
+            <p>{{c.name | uppercase}}</p>
+            <button routerLink="/products-list/{{c.id}}">SHOP NOW</button>
+        </div>
+    </div>
+</div>

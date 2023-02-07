@@ -2,9 +2,10 @@
     <div (click)="navToProductPage()">
         <img [src]="product.image" class="product-box__img">
         <h6 class="product-box__title">{{product.name}}</h6>
+        <span class="product-box__price">{{product.price| currency}}</span>
     </div>
     <div class="product-box__operations" *ngIf="isAdmin">
-        <button (click)="deleteItem()">Delete</button>
-        <button>Edit</button>
+        <button (click)="onClickDeleteItem()" class="btn btn-danger">Delete</button>
+        <button (click)="onClickUpdateItem()" class="btn btn-warning">Edit</button>
     </div>
 </div>

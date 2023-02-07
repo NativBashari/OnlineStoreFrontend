@@ -1,8 +1,38 @@
+.banner{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    
+}
 .header{
-    background-color: orangered;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__logo{
+        display: flex;
+        justify-content: center;
         font-size: 5rem;
-        color: #fff;
         cursor: pointer;
+    }
+    &__nav{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        font-size: 2rem;
+        list-style: none;
+
+        li{
+            transition: all .2s;
+            a{
+                text-decoration: none;
+                color: black;
+              
+            }
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    
     }
 }

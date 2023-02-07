@@ -1,11 +1,14 @@
 <section>
     <div *ngIf="isAdmin">
-        <button (click)="navToAddNew()">Add new</button>
+        <button (click)="navToAddNew()" class="btn btn-success">Add new</button>
     </div>
-    <div class="products-list">
-        <div *ngFor="let product of products">
-            <app-product-item [product]="product"></app-product-item>
+    <div class="container">
+        <div class="row">
+            <div *ngFor="let product of products" class="col-4 mb-3">
+                <app-product-item [product]="product"></app-product-item>
+            </div>
         </div>
     </div>
+  
  
 </section>

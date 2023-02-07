@@ -26,7 +26,6 @@
             <div class="form-group">
                 <label for="discount">Discount: </label>
                 <select class="form-select" [(ngModel)]="product.discountId" name="discount">
-                    <option value="0">No discount</option>
                     <option *ngFor="let discount of discounts" value="{{discount.id}}">{{discount.name}} : {{discount.discountPrec}}%</option>
                 </select>
             </div>

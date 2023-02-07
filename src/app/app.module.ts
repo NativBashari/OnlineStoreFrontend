@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { AuthService } from './Services/Auth/auth.Service';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
-import { RegisterComponent } from './Components/register/register.component';
 import { HeaderComponent } from './Components/Shared/header/header.component';
 import { ProductItemComponent } from './Components/product-item/product-item.component';
 import { ProductsListComponent } from './Components/products-list/products-list.component'
@@ -19,19 +18,20 @@ import { RoleGuard } from './Guards/Role.guard';
 import { NewProductComponent } from './Components/new-product/new-product.component';
 import { CategoriesService } from './Services/Products/categories.service';
 import { DiscountsService } from './Services/Products/discounts.service';
+import { HomePageComponent } from './Pages/home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     ProductItemComponent,
     ProductsListComponent,
     ProductPageComponent,
     CmsPageComponent,
-    NewProductComponent
+    NewProductComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

@@ -34,10 +34,13 @@ export class ProductItemComponent implements OnInit {
     this.router.navigate(["/product-page", this.product.id]);
 
   }
-  deleteItem(){
+  onClickDeleteItem(){
     this.productsService.delete(this.product.id).subscribe(res =>{
       console.log(res);
     })
+  }
+  onClickUpdateItem(){
+    this.router.navigate(['/update-product', this.product.id]);
   }
 
 }

@@ -26,9 +26,9 @@ export class NewProductComponent implements OnInit {
     image : '',
     price: 0,
     categoryId: 0,
-    category: {id : 0 , name : '', description : '', image: '', products : [], createdAt : new Date(), modifiedAt : new Date()},
+    category: null,
     discountId: 0,  
-    discount: {id: 0, name: '', description : '' , discountPrec:0, isActive: false, createdAt: new Date(), modifiedAt: new Date()},
+    discount: null,
     createdAt : new Date(),
     modifiedAt: new Date()
   }
@@ -72,11 +72,13 @@ export class NewProductComponent implements OnInit {
 
   addProduct(){
       if(!this.isUpdate){
+        console.log(this.product);
         this.productsService.post(this.product).subscribe(res => {
           console.log(res);
         })
       }
       else{
+        console.log(this.product);
         this.product.modifiedAt = new Date();
         this.productsService.update(this.product).subscribe(res => {
           console.log(res);
