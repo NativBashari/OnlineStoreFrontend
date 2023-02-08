@@ -2,8 +2,25 @@
     <div class="banner">
         <p>Free shipping on purchases over 200$ !</p>
     </div>
-    <div>
-        <p class="header__logo" routerLink="products-list">OnlineStore</p>
+    <div class="header__header">
+        <div class="header__header__icons">
+            <div>
+                <img class="icon" src="https://freesvg.org/img/abstract-user-flat-1.png" alt="my-account" (click)="navToAccount()">
+                <p>{{user == 'null null'? "login" : user}}</p>
+                <a (click)="logout()">Logout</a>
+            </div>
+            <div>
+                <img class="icon" src="https://freesvg.org/img/grocery-15.png" alt="my-cart">
+                <p>Cart</p>
+            </div>
+        </div>
+        <div></div>
+        <div class="header__logo">
+            <p routerLink="products-list">OnlineStore</p>
+        </div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
     <div>
         <ul class="header__nav">

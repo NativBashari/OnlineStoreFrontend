@@ -20,7 +20,7 @@ export class ProductsListComponent implements OnInit {
     this.activatedRoute.params.subscribe(param =>{
       this.categoryId = param['categoryId'];
       console.log(this.categoryId);
-    })
+    });
     if(this.categoryId == undefined){
       this.productsService.get().subscribe(res =>{
         this.products = res; 

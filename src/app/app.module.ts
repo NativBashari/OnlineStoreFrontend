@@ -19,6 +19,7 @@ import { NewProductComponent } from './Components/new-product/new-product.compon
 import { CategoriesService } from './Services/Products/categories.service';
 import { DiscountsService } from './Services/Products/discounts.service';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
+import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HomePageComponent } from './Pages/home-page/home-page.component';
     ProductPageComponent,
     CmsPageComponent,
     NewProductComponent,
-    HomePageComponent
+    HomePageComponent,
+    UserAccountPageComponent
   ],
   imports: [
     BrowserModule,
