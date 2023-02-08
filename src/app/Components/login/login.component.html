@@ -11,17 +11,19 @@
             <label for="password">Password</label>
             <input class="form-control" type="password" id="password" formControlName="password">
         </div>
-        <div class="form-group">
-            <label for="fName">First name</label>
-            <input type="text" id="fName" class="form-control">
-        </div>
-        <div>
-            <label for="lName">Last name</label>
-            <input type="text" id="lName" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="telephone">Phone number</label>
-                <input type="text" id="telephone" class="form-control">
+        <div *ngIf="isSignUp">
+            <div class="form-group">
+                <label for="fName">First name</label>
+                <input type="text" id="fName" class="form-control" formControlName="firstName">
+            </div>
+            <div>
+                <label for="lName">Last name</label>
+                <input type="text" id="lName" class="form-control" formControlName="lastName">
+            </div>
+            <div class="form-group">
+                <label for="telephone">Phone number</label>
+                    <input type="text" id="telephone" class="form-control" formControlName="telephone">
+            </div>
         </div>
         <button class="btn btn-primary" type="submit" (click)="loginUser()">{{isSignUp?'Register': 'Login'}}</button>
         <button *ngIf="!isSignUp" class="sign-up btn btn-primary" (click)="switchToSignUp()">sign up</button>
