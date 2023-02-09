@@ -7,7 +7,7 @@
             <div>
                 <img class="icon" src="https://freesvg.org/img/abstract-user-flat-1.png" alt="my-account" (click)="navToAccount()">
                 <p>{{user == 'null null'? "login" : user}}</p>
-                <a (click)="logout()">Logout</a>
+                <a (click)="logout()" *ngIf="user !== 'null null'">Logout</a>
             </div>
             <div>
                 <img class="icon" src="https://freesvg.org/img/grocery-15.png" alt="my-cart">
