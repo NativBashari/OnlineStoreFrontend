@@ -25,6 +25,14 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/my-account/'+ localStorage.getItem("id")]);
     }
   }
+  navToCart(){
+    if(this.user == "null null"){
+      this.router.navigate(['/login']);
+      }
+      else{
+        this.router.navigate(['/my-cart/'+ localStorage.getItem("id")]);
+      }
+  }
 
   logout(){
     localStorage.clear();

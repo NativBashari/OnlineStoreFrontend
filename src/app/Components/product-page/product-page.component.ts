@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/ProductsManagement/product.model';
 import { ProductsService } from 'src/app/Services/Products/products.Service';
+import { UserCartService } from 'src/app/Services/userServices/userCart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -24,7 +25,7 @@ export class ProductPageComponent implements OnInit {
     createdAt : new Date(),
     modifiedAt: new Date()
   };
-  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private productsService: ProductsService, private userCartService: UserCartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params =>{
@@ -36,6 +37,11 @@ export class ProductPageComponent implements OnInit {
   getData(){
     this.productsService.getById(this.productId).subscribe(res =>{
       this.product = res;
+    })
+  }
+  async addToCart(){
+   (await this.userCartService.addToCart(this.product)).subscribe(res =>{
+      console.log(res);
     })
   }
 

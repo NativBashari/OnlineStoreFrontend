@@ -10,7 +10,7 @@
                 <a (click)="logout()" *ngIf="user !== 'null null'">Logout</a>
             </div>
             <div>
-                <img class="icon" src="https://freesvg.org/img/grocery-15.png" alt="my-cart">
+                <img class="icon" src="https://freesvg.org/img/grocery-15.png" alt="my-cart" (click)="navToCart()">
                 <p>Cart</p>
             </div>
         </div>

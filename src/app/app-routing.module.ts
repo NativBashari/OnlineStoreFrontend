@@ -8,6 +8,7 @@ import { RoleGuard } from './Guards/Role.guard';
 import { NewProductComponent } from './Components/new-product/new-product.component';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { CartPageComponent } from './Pages/cart-page/cart-page.component';
 
 const routes: Routes = [
   {path:"", component: HomePageComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: "cms" , component: CmsPageComponent, canActivate:[RoleGuard]},
   {path: "new-product" , component: NewProductComponent, canActivate: [RoleGuard]},
   {path: "update-product/:id" , component: NewProductComponent, canActivate: [RoleGuard]},
-  {path: "my-account/:id", component: UserAccountPageComponent}
+  {path: "my-account/:id", component: UserAccountPageComponent},
+  {path: "my-cart/:id", component: CartPageComponent}
 ];
 
 @NgModule({

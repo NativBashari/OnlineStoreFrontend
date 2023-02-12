@@ -6,7 +6,7 @@
         <h3 class="product-overview__title">{{product.name}}</h3>
         <p class="product-overview__description">{{product.description}}</p>
         <span class="product-overview__price">{{product.price| currency }}</span>
-        <button class="product-overview__btn">Add To Cart</button>
+        <button class="product-overview__btn" (click)="addToCart()">Add To Cart</button>
 
     </div>
 

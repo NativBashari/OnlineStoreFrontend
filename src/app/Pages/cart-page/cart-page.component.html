@@ -1,0 +1,12 @@
+<div class="container ">
+    <div *ngFor="let p of products" class="product-box" class="row">
+        <img src="{{p.image}}" alt="Product-img" class="col-3 product-img">
+        <p class="col-3">{{p.name}}</p>
+        <p class="col-3">{{p.price | currency}}</p>
+        <div class="col-3">
+            <button class="btn btn-danger">Remove</button>
+        </div>
+        <hr>
+    </div>
+
+</div>

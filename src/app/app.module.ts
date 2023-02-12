@@ -20,6 +20,8 @@ import { CategoriesService } from './Services/Products/categories.service';
 import { DiscountsService } from './Services/Products/discounts.service';
 import { HomePageComponent } from './Pages/home-page/home-page.component';
 import { UserAccountPageComponent } from './user-account-page/user-account-page.component';
+import { CartPageComponent } from './Pages/cart-page/cart-page.component';
+import { UserCartService } from './Services/userServices/userCart.service';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { UserAccountPageComponent } from './user-account-page/user-account-page.
     CmsPageComponent,
     NewProductComponent,
     HomePageComponent,
-    UserAccountPageComponent
+    UserAccountPageComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { UserAccountPageComponent } from './user-account-page/user-account-page.
     useClass: HeadersInterceptors,
     multi: true
   },
-  RoleGuard
+  RoleGuard,
+  UserCartService
 ],
   bootstrap: [AppComponent]
 })
