@@ -41,7 +41,7 @@ export class ProductPageComponent implements OnInit {
   }
   async addToCart(){
    (await this.userCartService.addToCart(this.product)).subscribe(res =>{
-      console.log(res);
+     console.log(res);
     })
   }
 

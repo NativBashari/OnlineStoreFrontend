@@ -11,8 +11,8 @@ import { UserCartService } from 'src/app/Services/userServices/userCart.service'
 export class CartPageComponent implements OnInit {
 
   id:number =0;
-  products: Product[] =[];
-  constructor(private activatedRoute:ActivatedRoute, private userCartsService: UserCartService) { }
+  products: Product[]| null =[];
+  constructor(private activatedRoute:ActivatedRoute, private userCartsService: UserCartService, private userCartService: UserCartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(param =>{
@@ -22,6 +22,12 @@ export class CartPageComponent implements OnInit {
     this.userCartsService.get(this.id).subscribe(res =>{
       this.products = res.products;
       console.log(this.products);
+    });
+  }
+
+  async removeFromCart(product: Product){
+    (await this.userCartService.removeFromCart(product)).subscribe(res =>{
+      console.log(res);
     });
   }
 

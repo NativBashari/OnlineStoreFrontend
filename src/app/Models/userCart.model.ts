@@ -3,7 +3,7 @@ import { User } from "./user.model";
 
 export interface userCart{
     id: number,
-    products: Product[],
+    products: Product[] | null,
     userId: number,
     user: User | null
 }
