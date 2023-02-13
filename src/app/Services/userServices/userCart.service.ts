@@ -13,6 +13,9 @@ export class UserCartService{
     get(id:number): Observable<userCart>{
         return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/` +id) as Observable<userCart>;
     }
+    getUserCartProducts(userCartId: number){
+        return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/Products/UserCarts/` +userCartId);
+    }
     async addToCart(product: Product){
       
         await this.get(Number(localStorage.getItem('id'))).subscribe(res =>{
