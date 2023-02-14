@@ -24,12 +24,8 @@ export class UserCartService{
         this.userCart!.products!.push(product);
         return this.httpClient.put(`${environment.ApiBaseUrl}/UserCarts`, this.userCart);
     }
-    async removeFromCart(product: Product){
-        await this.get(Number(localStorage.getItem('id'))).subscribe(res =>{
-            this.userCart = res;
-        });
-        this.userCart!.products! = this.userCart!.products!.filter(p => p.id != product.id);      
-        return this.httpClient.put(`${environment.ApiBaseUrl}/UserCarts`, this.userCart);
+     removeFromCart(userCartId: number , productId: number){
+        return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/UserCarts/${userCartId}/${productId}`);
     }
 
 }

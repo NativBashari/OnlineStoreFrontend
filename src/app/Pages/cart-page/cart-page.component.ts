@@ -34,10 +34,10 @@ export class CartPageComponent implements OnInit {
     });  
   }
 
-  async removeFromCart(product: Product){
-    (await this.userCartService.removeFromCart(product)).subscribe(res =>{
+ removeFromCart(product: Product){
+    this.userCartService.removeFromCart(this.userCart.id,product.id).subscribe(res =>{
       console.log(res);
-    });
+    })    
   }
 
 }
