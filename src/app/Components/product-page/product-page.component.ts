@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/ProductsManagement/product.model';
+import { userCart } from 'src/app/Models/userCart.model';
 import { ProductsService } from 'src/app/Services/Products/products.Service';
 import { UserCartService } from 'src/app/Services/userServices/userCart.service';
 
@@ -39,10 +40,15 @@ export class ProductPageComponent implements OnInit {
       this.product = res;
     })
   }
-  async addToCart(){
-   (await this.userCartService.addToCart(this.product)).subscribe(res =>{
-     console.log(res);
+  addToCart(){
+    let userCart: userCart;
+    this.userCartService.get(Number(localStorage.getItem('id'))).subscribe(res =>{
+      userCart = res;
+      this.userCartService.addToCart(userCart!.id ,this.product.id).subscribe(res =>{
+        console.log(res);
+       })
     })
+  
   }
 
 }

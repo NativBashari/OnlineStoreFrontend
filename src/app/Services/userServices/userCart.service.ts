@@ -16,16 +16,11 @@ export class UserCartService{
     getUserCartProducts(userCartId: number){
         return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/Products/UserCarts/` +userCartId);
     }
-    async addToCart(product: Product){
-      
-        await this.get(Number(localStorage.getItem('id'))).subscribe(res =>{
-            this.userCart = res;     
-        });
-        this.userCart!.products!.push(product);
-        return this.httpClient.put(`${environment.ApiBaseUrl}/UserCarts`, this.userCart);
+    addToCart(userCartId: number, productId: number){
+        return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/AddToCart/${userCartId}/${productId}`);
     }
      removeFromCart(userCartId: number , productId: number){
-        return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/UserCarts/${userCartId}/${productId}`);
+        return this.httpClient.get(`${environment.ApiBaseUrl}/UserCarts/RemoveFromCart/${userCartId}/${productId}`);
     }
 
 }
